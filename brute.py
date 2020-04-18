@@ -1,3 +1,4 @@
+# Copyright 2020 Billal Fauzan
 import sqlite3
 import os
 import sys
@@ -6,9 +7,9 @@ import time
 def banner():
 	logo = """\033[31;1m
        __  __ ___  ___   _ _ 
-      |  \/  |   \| __|_| | |_
+      |  \/  |   \| __|_| | |_  \033[33;1m(\033[34;1m0.3\033[33;1m)\033[31;1m
       | |\/| | |) |__ \_  .  _|\033[37;1m
-      |_|  |_|___/|___/_     _|
+      |_|  |_|___/|___/_     _| \033[36;1mBillal Gans
      \033[32;1m     BRUTE FORCE   \033[37;1m|_|_|\033[0m
 """
 	return logo
@@ -22,13 +23,13 @@ class md5:
 	def __init__(self, hash):
 		self.hash = hash
 		self.data = []
-		self.file = ["data.db", "data1.db", "data2.db"]
+		self.file = ["freedb.db"]
 		self.found = 0
 
 	def readDB(self):
 		print ("\r\033[37;1m[\033[33;1m#\033[37;1m] \033[36;1mWhile reading the database, please wait", end="", flush=True)
 		for file in self.file:
-			konek = sqlite3.connect("/sdcard/"+file)
+			konek = sqlite3.connect("databases/"+file)
 			cur = konek.cursor()
 			cur.execute("SELECT * FROM wordlist")
 #			print )
